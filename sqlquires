@@ -1,0 +1,30 @@
+H1:
+select account_key from customer_account_info,customer_transactions,countries_info group by Transaction Type having count(*)>10;
+M1:
+select account_key from customer_account_info,customer_transactions,countries_info group by Transaction Type having count(*)>6;
+L1:
+select account_key from customer_account_info,customer_transactions group by Transaction Type having count(*)<10;
+
+H2:
+select col_names from table_names, customer_transactions where Transaction Type like 'I%' group by Transaction Type having SUM(Transaction_Amount(in $))>1000;
+M2:
+select col_names from table_names, customer_transactions where Transaction Type like 'I%' group by Transaction Type having SUM(Transaction_Amount(in $)) between 600 and 1000;
+L2:
+select col_names from table_names, customer_transactions where Transaction Type like 'I%' group by Transaction Type having SUM(Transaction_Amount(in $))<600;
+
+H3:
+select col_names from table_names, customer_transactions where Transaction Type like 'O%' group by Transaction Type having SUM(Transaction_Amount(in $))>800;
+M3:
+select col_names from table_names, customer_transactions where Transaction Type like 'O%' group by Transaction Type having SUM(Transaction_Amount(in $)) between 500 and 800;
+L3:
+select col_names from table_names, customer_transactions where Transaction Type like 'O%' group by Transaction Type having SUM(Transaction_Amount(in $))<500;
+
+H4: 
+select party_key(including just one attribute) from customer_info, customer_transactions(this is the main table, other tables just join them)
+group by Transaction_Date having SUM(Transaction_Amount(in $))>20  
+M4:
+select party_key(including just one attribute) from customer_info, customer_transactions(this is the main table, other tables just join them)
+group by Transaction_Date having SUM(Transaction_Amount(in $)) between 10 and 20;
+L4:
+select party_key(including just one attribute) from customer_info, customer_transactions(this is the main table, other tables just join them)
+group by Transaction_Date having SUM(Transaction_Amount(in $)) <10
