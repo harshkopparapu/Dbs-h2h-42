@@ -1,0 +1,107 @@
+h1=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+where customer_transactions.transaction_amountin_>10
+
+h2=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by customer_transactions.Transaction_Type
+having SUM(customer_transactions.Transaction_Amountin_)>1000;
+
+h3=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+like "O%"
+group by customer_transactions.Transaction_Type
+having SUM(customer_transactions.Transaction_Amountin_)>800
+
+h4=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by customer_transactions.Transaction_Date
+having SUM(customer_transactions.Transaction_Amountin_)>20
+​
+
+m2=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by customer_transactions.Transaction_Type
+having SUM(customer_transactions.Transaction_Amountin_) between 600 and 100
+
+m1=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by customer_transactions.Transaction_Type
+having count(*)>6
+
+m3=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+like 'O%'
+group by customer_transactions.Transaction_Type
+having SUM(customer_transactions.Transaction_Amountin_) between 500 and 800;
+
+m4=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by Transaction_Date
+ having SUM(Transaction_Amountin_) between 10 and 20;
+ 
+l1=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by Transaction_Type having count(*)<10;
+
+l2=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+like 'I%'
+group by Transaction_Type
+having SUM(Transaction_Amountin_)<600;
+
+l3=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by Transaction_Type having SUM(Transaction_Amountin_)<500;
+
+l4=
+
+use dbs_project;
+select customer_account_info.Account_Key,customer_info.party_key,customer_transactions.transaction_amountin_ from customer_account_info
+inner join customer_transactions on customer_account_info.Account_Key=customer_transactions.Account_Key
+inner join customer_info on customer_account_info.primary_party_key=customer_info.party_key
+group by Transaction_Date having SUM(Transaction_Amountin_)<10
